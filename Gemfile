@@ -9,6 +9,8 @@ gem 'sprockets', '2.12.4'
 group :development, :test do
   gem 'sqlite3', '1.3.10' #'1.3.8' is not better in Ruby2.1
   gem 'rspec-rails', '2.13.1'
+  gem 'quiet_assets'
+  gem 'awesome_print'
 end
 
 group :test do
@@ -33,3 +35,5 @@ group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
+
+gem 'kaminari'
