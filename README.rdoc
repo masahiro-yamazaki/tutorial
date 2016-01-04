@@ -1,3 +1,6 @@
+150104_1045
+rails tutorial 5.4Ç‹Ç≈èIóπ
+
 == README
 
 This README would normally document whatever steps are necessary to get the
