@@ -8,6 +8,8 @@ gem 'sprockets', '2.12.4'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'bcrypt'
 gem 'faker', '1.1.2'
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 group :development, :test do
   gem 'sqlite3', '1.3.10' #'1.3.8' is not better in Ruby2.1
