@@ -1,0 +1,41 @@
+参考
+Railsinstallerのインストール方法(Windows編)
+http://qiita.com/naotor@github/items/aefd5b258d395f84c9c7#%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A
+
+railsinstaller 3.2.0のバグのせいでハマった時間を返してほしい
+http://qiita.com/k-shimoji/items/7396d340c7d256c0345f
+Rails Girls インストール・レシピ
+http://railsgirls.jp/install
+
+# Prepare RailsInstaller
+http://railsinstaller.org/
+https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.2.0.exe
+# インストーラがダウンロードされる
+
+railsinstaller-3.2.0.exeを実行する
+C:\RailsInstallerを指定してインストールする
+# GitHubがない場合はname/emailを設定する
+  # ruby -v を実行できる
+  # C:\Sites\todoにサンプルアプリが作成される
+  # C:\RailsInstaller\Git\git-cmd.batでLinuxコマンドとGitコマンドが実行できる
+
+cd \Sites (or \sites)
+git clone https://github.com/masahiro-yamazaki/tutorial.git
+cd tutorial
+# git statusを実行できる
+
+# rails -v が実行できない場合以下を実行する
+cd C:\RailsInstaller\Ruby2.2.0\bin
+mv rails.bat rails_bkup.bat
+mv bundle.bat bundle_bkup.bat
+copy rake.bat rails.bat
+copy rake.bat bundle.bat
+# rails -v が実行できる
+
+# bundle install が実行できない場合以下を実行する
+source 'https://rubygems.org' -> source 'http://rubygems.org'
+# 以下は必要かどうか確認していない
+C:\RailsInstaller\Ruby2.2.0\lib\ruby\2.2.0にcacert.pemを追加
+(gem which rubygemsで出るフォルダ)
+SSL_CERT_FILEの環境変数を追加し以下のパスを追加する
+C:\RailsInstaller\Ruby2.2.0\lib\ruby\2.2.0\cacert.pem

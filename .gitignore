@@ -24,4 +24,5 @@ doc/
 .idea
 .secret
 
-Gemfile.lock
+# Gemfile.lock
+/vendor/bundle
