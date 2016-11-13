@@ -1,3 +1,9 @@
+#####################################
+# 前提条件
+# VirtualBoxとVagrantがインストールされていること
+#　http://qiita.com/Y4TChaN/items/59437c442a16abadde77
+#####################################
+
 # 開発用パッケージのインストール
 sudo yum update
 sudo yum -y install git gcc make openssl-devel zlib-devel readline* gcc-c++
