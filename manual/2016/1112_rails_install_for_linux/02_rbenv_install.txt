@@ -1,0 +1,20 @@
+[root@vagrant-centos65 ~]# cd
+
+[root@vagrant-centos65 ~]# git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+Initialized empty Git repository in /root/.rbenv/.git/
+remote: Counting objects: 2542, done.
+remote: Total 2542 (delta 0), reused 0 (delta 0), pack-reused 2542
+Receiving objects: 100% (2542/2542), 461.07 KiB | 118 KiB/s, done.
+Resolving deltas: 100% (1598/1598), done.
+
+
+[root@vagrant-centos65 ~]# git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+Initialized empty Git repository in /root/.rbenv/plugins/ruby-build/.git/
+remote: Counting objects: 6993, done.
+remote: Compressing objects: 100% (10/10), done.
+Receiving objects: 100% (6993/6993), 1.36 MiB | 55 KiB/s, done.
+remote: Total 6993 (delta 2), reused 0 (delta 0), pack-reused 6981
+Resolving deltas: 100% (4153/4153), done.
+
+
+
