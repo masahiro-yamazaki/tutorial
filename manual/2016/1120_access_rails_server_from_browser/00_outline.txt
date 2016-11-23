@@ -1,0 +1,112 @@
+#####################################
+# 前提条件
+# VirtualBox/Vagrant/rbenv/ruby/railsがインストールされていること
+#　http://qiita.com/hurukiyokimura/items/bd517c463d24ea9059f3
+#####################################
+
+#####################################
+#　0. public_networkの設定
+#####################################
+
+# 下記をコメントアウトする
+config.vm.network = "public_network"
+
+#####################################
+#　1. Vagrantfileの設定
+http://fuzz-jpn.com/blog/vagrant_rails_server_browser/
+#####################################
+
+config.vm.network "private_network", ip: "192.168.33.1"
+config.vm.network :forwarded_port, guest: 3000, host: 3000
+
+#####################################
+#　2. iptablesの設定a
+http://fuzz-jpn.com/blog/vagrant_rails_server_browser/
+http://takuya-1st.hatenablog.jp/entry/20100903/1283492239
+#####################################
+
+#sudo service iptables save
+#sudo service iptables reload
+#sudo iptables -L
+
+$ sudo vi /etc/sysconfig/iptables
+に以下を記載
+
+# Firewall configuration written by system-config-firewall
+# Manual customization of this file is not recommended.
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 3000 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+
+/etc/init.d/iptables restart
+が先
+
+/etc/init.d/iptables save
+/etc/init.d/iptables restart
+#/etc/init.d/iptables stop
+#/etc/init.d/iptables start
+
+# VirtualBoxのネットワーク設定
+トップのメニュー⇒環境設定から<ホストオンリーアダプター>を追加
+#以下の値がVirtualBoxの初期設定値
+#IPv4アドレス 192.168.33.1
+#IPv4ネットマスク 255.255.255.0
+
+CentOSのアダプター2に<ホストオンリーアダプター>を追加
+
+# 以下ifcfg-eth1を新規作成
+"/etc/sysconfig/network-scripts/ifcfg-eth1"
+
+DEVICE=eth1
+BOOTPROTO=static
+ONBOOT=yes
+IPADDR=192.168.33.2
+NETMASK=192.168.33.0
+NETWORK=192.168.33.0
+
+# 参考
+"/etc/sysconfig/network-scripts/ifcfg-eth0"
+BOOTPROTO=dhcp
+DEVICE=eth0
+DHCP_HOSTNAME=vagrant-centos65.vagrantup.com
+IPV6INIT=yes
+NM_CONTROLLED=no
+ONBOOT=yes
+TYPE=Ethernet
+
+# ifcfg-eth1を新規作成したあと以下を実行する
+ifup eth1
+  # Determining if ip address 192.168.33.2 is already in use for device eth1...
+ifconfig eth1
+  # 2行目に以下のような記述が出る
+  # inet addr:192.168.33.2
+
+/etc/init.d/iptables restart
+
+http://qiita.com/noraworld/items/d92cca9bb449b48a97aa#_reference-745f6b0da3fd30207c46
+
+#http://qiita.com/Salinger/items/20f466ffe7cc0c04b010
+#awk 'BEGIN {port="3000";s="/inet/tcp/" port "/0/0";RS=ORS="\r\n";for(;;){if((s |& getline) > 0){printf "HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\nPort 3000 test" |& s;}close(s);}}'
+
+# ホストOSからping送信
+C:\Users\yamazaki>ping 192.168.33.1
+
+192.168.33.1 に ping を送信しています 32 バイトのデータ:
+192.168.33.1 からの応答: バイト数 =32 時間 <1ms TTL=128
+192.168.33.1 からの応答: バイト数 =32 時間 <1ms TTL=128
+192.168.33.1 からの応答: バイト数 =32 時間 <1ms TTL=128
+192.168.33.1 からの応答: バイト数 =32 時間 <1ms TTL=128
+
+192.168.33.1 の ping 統計:
+    パケット数: 送信 = 4、受信 = 4、損失 = 0 (0% の損失)、
+ラウンド トリップの概算時間 (ミリ秒):
+    最小 = 0ms、最大 = 0ms、平均 = 0ms
