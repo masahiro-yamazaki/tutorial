@@ -4,6 +4,12 @@ http://hp.vector.co.jp/authors/VA018351/claunch.html
 http://hp.vector.co.jp/authors/VA018351/archives/cl327u.exe(win32)
 http://hp.vector.co.jp/authors/VA018351/archives/cl64_327.exe(win64)
 
+# ツールチップ
+ファイル名
+C:\Program Files (x86)\teraterm\ttermpro.exe
+パラメータ
+127.0.0.1:2222 /auth=password /user=root /passwd=vagrant
+
 # Sublime3
 #http://futago-life.com/sublime-text3-wiki/first-step/install/package-control
 https://download.sublimetext.com/Sublime%20Text%20Build%203126%20Setup.exe
@@ -14,4 +20,3 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 
 # Sublime3のPakeageControllはCtrl+Shiftで呼び出せる
 Package Control: Install Package を選択
-
