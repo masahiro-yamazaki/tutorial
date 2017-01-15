@@ -1,0 +1,9 @@
+# http://qiita.com/kouchi67/items/ed9b51098075031b7323
+# git config --global color.ui true
+
+# vi ~/.gitconfig
+[user]
+        name = Masahiro Yamazaki
+        email = masahiro777.ymzk@gmail.com
+[color]
+        ui = true
