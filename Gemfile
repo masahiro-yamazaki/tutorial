@@ -35,6 +35,7 @@ gem 'jbuilder', '1.0.2'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 gem 'therubyracer'
+gem 'rake', '< 11.0'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
