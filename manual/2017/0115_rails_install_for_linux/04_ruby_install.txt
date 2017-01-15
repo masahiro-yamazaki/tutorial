@@ -617,27 +617,27 @@ compiling enum.c
 compiling enumerator.c
 compiling error.c
 compiling eval.c
-eval.c: In function eruby_setupf:
-eval.c:58: warning: e_thf may be used uninitialized in this function
-eval.c: In function esetup_exceptionf:
-eval.c:531: warning: e_thf may be used uninitialized in this function
-eval.c: In function eruby_optionsf:
-eval.c:101: warning: e_thf may be used uninitialized in this function
+eval.c: In function ï¿½eruby_setupï¿½f:
+eval.c:58: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+eval.c: In function ï¿½esetup_exceptionï¿½f:
+eval.c:531: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+eval.c: In function ï¿½eruby_optionsï¿½f:
+eval.c:101: warning: ï¿½e_thï¿½f may be used uninitialized in this function
 In file included from eval.c:35:
-eval_jump.c: In function erb_exec_end_procf:
-eval_jump.c:121: warning: e_thf may be used uninitialized in this function
-eval_jump.c:118: warning: ethf may be used uninitialized in this function
-eval.c: In function eruby_cleanupf:
-eval.c:179: warning: e_thf may be used uninitialized in this function
-eval.c:189: warning: e_thf may be used uninitialized in this function
-eval.c:169: warning: e_thf may be used uninitialized in this function
+eval_jump.c: In function ï¿½erb_exec_end_procï¿½f:
+eval_jump.c:121: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+eval_jump.c:118: warning: ï¿½ethï¿½f may be used uninitialized in this function
+eval.c: In function ï¿½eruby_cleanupï¿½f:
+eval.c:179: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+eval.c:189: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+eval.c:169: warning: ï¿½e_thï¿½f may be used uninitialized in this function
 compiling load.c
-load.c: In function erb_load_internal0f:
-load.c:604: warning: e_thf may be used uninitialized in this function
+load.c: In function ï¿½erb_load_internal0ï¿½f:
+load.c:604: warning: ï¿½e_thï¿½f may be used uninitialized in this function
 compiling proc.c
-proc.c: In function erb_method_call_with_blockf:
-proc.c:1970: warning: e_thf may be used uninitialized in this function
-proc.c:1962: warning: edataf may be used uninitialized in this function
+proc.c: In function ï¿½erb_method_call_with_blockï¿½f:
+proc.c:1970: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+proc.c:1962: warning: ï¿½edataï¿½f may be used uninitialized in this function
 compiling file.c
 compiling gc.c
 compiling hash.c
@@ -666,16 +666,16 @@ compiling safe.c
 compiling signal.c
 compiling sprintf.c
 In file included from sprintf.c:1272:
-vsnprintf.c: In function eBSD_vfprintff:
+vsnprintf.c: In function ï¿½eBSD_vfprintfï¿½f:
 vsnprintf.c:828: warning: comparison of unsigned expression < 0 is always false
 compiling st.c
 compiling strftime.c
 compiling string.c
-string.c: In function erb_fstring_newf:
-string.c:339: warning: dereferencing pointer efake_str.91f does break strict-aliasing rules
+string.c: In function ï¿½erb_fstring_newï¿½f:
+string.c:339: warning: dereferencing pointer ï¿½efake_str.91ï¿½f does break strict-aliasing rules
 string.c:339: note: initialized from here
-string.c: In function erb_fstring_cstrf:
-string.c:339: warning: dereferencing pointer efake_str.91f does break strict-aliasing rules
+string.c: In function ï¿½erb_fstring_cstrï¿½f:
+string.c:339: warning: dereferencing pointer ï¿½efake_str.91ï¿½f does break strict-aliasing rules
 string.c:339: note: initialized from here
 compiling struct.c
 compiling symbol.c
@@ -687,41 +687,41 @@ compiling version.c
 compiling compile.c
 compiling debug.c
 compiling iseq.c
-iseq.c: In function erb_iseq_compile_with_optionf:
-iseq.c:609: warning: elabelf may be used uninitialized in this function
-iseq.c:610: warning: etypef may be used uninitialized in this function
-iseq.c:611: warning: eparsef may be used uninitialized in this function
-iseq.c:612: warning: elnf may be used uninitialized in this function
-iseq.c:635: warning: e_thf may be used uninitialized in this function
+iseq.c: In function ï¿½erb_iseq_compile_with_optionï¿½f:
+iseq.c:609: warning: ï¿½elabelï¿½f may be used uninitialized in this function
+iseq.c:610: warning: ï¿½etypeï¿½f may be used uninitialized in this function
+iseq.c:611: warning: ï¿½eparseï¿½f may be used uninitialized in this function
+iseq.c:612: warning: ï¿½elnï¿½f may be used uninitialized in this function
+iseq.c:635: warning: ï¿½e_thï¿½f may be used uninitialized in this function
 compiling vm.c
 In file included from vm.c:206:
-vm_eval.c: In function eeval_string_with_creff:
-vm_eval.c:1285: warning: e_thf may be used uninitialized in this function
-vm_eval.c: In function erb_eval_cmdf:
-vm_eval.c:1571: warning: e_thf may be used uninitialized in this function
-vm_eval.c:1556: warning: e_thf may be used uninitialized in this function
+vm_eval.c: In function ï¿½eeval_string_with_crefï¿½f:
+vm_eval.c:1285: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+vm_eval.c: In function ï¿½erb_eval_cmdï¿½f:
+vm_eval.c:1571: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+vm_eval.c:1556: warning: ï¿½e_thï¿½f may be used uninitialized in this function
 compiling vm_dump.c
 compiling vm_backtrace.c
-vm_backtrace.c: In function erb_debug_inspector_openf:
-vm_backtrace.c:1185: warning: e_thf may be used uninitialized in this function
+vm_backtrace.c: In function ï¿½erb_debug_inspector_openï¿½f:
+vm_backtrace.c:1185: warning: ï¿½e_thï¿½f may be used uninitialized in this function
 compiling vm_trace.c
-vm_trace.c: In function erb_suppress_tracingf:
-vm_trace.c:405: warning: e_thf may be used uninitialized in this function
-vm_trace.c: In function eexec_hooks_protectedf:
-vm_trace.c:296: warning: e_thf may be used uninitialized in this function
+vm_trace.c: In function ï¿½erb_suppress_tracingï¿½f:
+vm_trace.c:405: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+vm_trace.c: In function ï¿½eexec_hooks_protectedï¿½f:
+vm_trace.c:296: warning: ï¿½e_thï¿½f may be used uninitialized in this function
 compiling thread.c
-thread.c: In function eexec_recursivef:
-thread.c:4472: warning: e_thf may be used uninitialized in this function
-thread.c:4437: warning: esymf may be used uninitialized in this function
-thread.c: In function erb_thread_s_handle_interruptf:
-thread.c:1833: warning: e_thf may be used uninitialized in this function
-thread.c: In function ethread_start_func_2f:
-thread.c:582: warning: e_thf may be used uninitialized in this function
-thread.c: In function erb_thread_terminate_allf:
-thread.c:481: warning: e_thf may be used uninitialized in this function
+thread.c: In function ï¿½eexec_recursiveï¿½f:
+thread.c:4472: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+thread.c:4437: warning: ï¿½esymï¿½f may be used uninitialized in this function
+thread.c: In function ï¿½erb_thread_s_handle_interruptï¿½f:
+thread.c:1833: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+thread.c: In function ï¿½ethread_start_func_2ï¿½f:
+thread.c:582: warning: ï¿½e_thï¿½f may be used uninitialized in this function
+thread.c: In function ï¿½erb_thread_terminate_allï¿½f:
+thread.c:481: warning: ï¿½e_thï¿½f may be used uninitialized in this function
 compiling cont.c
-cont.c: In function econt_capturef:
-cont.c:480: warning: econtf may be used uninitialized in this function
+cont.c: In function ï¿½econt_captureï¿½f:
+cont.c:480: warning: ï¿½econtï¿½f may be used uninitialized in this function
 compiling enc/ascii.c
 compiling enc/us_ascii.c
 compiling enc/unicode.c

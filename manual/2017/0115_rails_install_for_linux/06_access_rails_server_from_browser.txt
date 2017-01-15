@@ -1,3 +1,15 @@
+###############################
+# iptablesによるポートアクセス制限を解除する方法
+# (ただし本番ではやらないこと！)
+###############################
+http://qiita.com/srockstyle/items/233ef326a75362200a91
+# iptables
+chkconfig iptables off
+/etc/init.d/iptables stop
+/etc/init.d/iptables save
+
+※以下、不完全な情報を含むことに注意
+
 #####################################
 # 前提条件
 # VirtualBox/Vagrant/rbenv/ruby/railsがインストールされていること
@@ -16,7 +28,7 @@ config.vm.network = "public_network"
 http://fuzz-jpn.com/blog/vagrant_rails_server_browser/
 #####################################
 
-config.vm.network "private_network", ip: "192.168.33.1"
+config.vm.network "private_network", ip: "192.168.33.10"
 config.vm.network :forwarded_port, guest: 3000, host: 3000
 
 #####################################
@@ -47,18 +59,15 @@ $ sudo vi /etc/sysconfig/iptables
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 COMMIT
 
-/etc/init.d/iptables restart
-が先
-
+/etc/init.d/iptables restart (saveより先)
 /etc/init.d/iptables save
-/etc/init.d/iptables restart
 #/etc/init.d/iptables stop
 #/etc/init.d/iptables start
 
 # VirtualBoxのネットワーク設定
 トップのメニュー⇒環境設定から<ホストオンリーアダプター>を追加
 #以下の値がVirtualBoxの初期設定値
-#IPv4アドレス 192.168.33.1
+#IPv4アドレス 192.168.33.10
 #IPv4ネットマスク 255.255.255.0
 
 CentOSのアダプター2に<ホストオンリーアダプター>を追加
@@ -66,12 +75,18 @@ CentOSのアダプター2に<ホストオンリーアダプター>を追加
 # 以下ifcfg-eth1を新規作成
 "/etc/sysconfig/network-scripts/ifcfg-eth1"
 
-DEVICE=eth1
-BOOTPROTO=static
-ONBOOT=yes
-IPADDR=192.168.33.2
-NETMASK=192.168.33.0
-NETWORK=192.168.33.0
+DEVICE="eth1"
+HWADDR="xx:xx:xx:xx:xx:xx" #ここにifconfigで出た値を書く。
+NM_CONTROLLED="yes"
+ONBOOT="yes"
+IPADDR=192.168.33.10
+NETMASK=255.255.255.0
+NETWORK=192.168.56.0
+BOOTPROTO=none
+TYPE=Ethernet
+USERCTL=no
+IPV6INIT=no
+PEERDNS=yes
 
 # 参考
 "/etc/sysconfig/network-scripts/ifcfg-eth0"
@@ -88,7 +103,7 @@ ifup eth1
   # Determining if ip address 192.168.33.2 is already in use for device eth1...
 ifconfig eth1
   # 2行目に以下のような記述が出る
-  # inet addr:192.168.33.2
+  # inet addr:192.168.33.10
 
 /etc/init.d/iptables restart
 
@@ -98,15 +113,15 @@ http://qiita.com/noraworld/items/d92cca9bb449b48a97aa#_reference-745f6b0da3fd302
 #awk 'BEGIN {port="3000";s="/inet/tcp/" port "/0/0";RS=ORS="\r\n";for(;;){if((s |& getline) > 0){printf "HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\nPort 3000 test" |& s;}close(s);}}'
 
 # ホストOSからping送信
-C:\Users\yamazaki>ping 192.168.33.1
+C:\Users\yamazaki>ping 192.168.33.10
 
-192.168.33.1 に ping を送信しています 32 バイトのデータ:
-192.168.33.1 からの応答: バイト数 =32 時間 <1ms TTL=128
-192.168.33.1 からの応答: バイト数 =32 時間 <1ms TTL=128
-192.168.33.1 からの応答: バイト数 =32 時間 <1ms TTL=128
-192.168.33.1 からの応答: バイト数 =32 時間 <1ms TTL=128
+192.168.33.10 に ping を送信しています 32 バイトのデータ:
+192.168.33.10 からの応答: バイト数 =32 時間 <1ms TTL=128
+192.168.33.10 からの応答: バイト数 =32 時間 <1ms TTL=128
+192.168.33.10 からの応答: バイト数 =32 時間 <1ms TTL=128
+192.168.33.10 からの応答: バイト数 =32 時間 <1ms TTL=128
 
-192.168.33.1 の ping 統計:
+192.168.33.10 の ping 統計:
     パケット数: 送信 = 4、受信 = 4、損失 = 0 (0% の損失)、
 ラウンド トリップの概算時間 (ミリ秒):
     最小 = 0ms、最大 = 0ms、平均 = 0ms
