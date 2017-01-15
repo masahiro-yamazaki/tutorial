@@ -4,6 +4,10 @@ http://hp.vector.co.jp/authors/VA018351/claunch.html
 http://hp.vector.co.jp/authors/VA018351/archives/cl327u.exe(win32)
 http://hp.vector.co.jp/authors/VA018351/archives/cl64_327.exe(win64)
 
+# 大量にウィンドウを開いてても超速起動できるランチャーCLaunchの使い方
+# Enter2回で起動できるようにする
+http://tonari-it.com/claunch-keyboard-shortcut/
+
 # ツールチップ
 ファイル名
 C:\Program Files (x86)\teraterm\ttermpro.exe
