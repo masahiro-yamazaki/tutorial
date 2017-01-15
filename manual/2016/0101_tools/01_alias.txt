@@ -1,0 +1,41 @@
+# applications
+alias shared63="cd /media/sf_shared63"
+alias tutorial="cd /media/sf_shared63/tutorialalias "
+alias hr-dash="cd /media/sf_shared63/hr-dash"
+
+# alias bashrc
+alias vb='vi ~/.bashrc'
+alias b='. ~/.bashrc'
+
+# git
+alias ga='git add'
+alias gc='git commit'
+alias gd='git diff'
+alias gl='git log'
+alias gs='git status'
+
+# git branch
+alias gbd='git branch -d'
+alias gbD='git branch -D'
+alias gbl='git branch -l'
+alias gbm='git branch -m'
+
+# git checkout
+alias alias gch='git checkout'
+alias gchb='git checkout -b'
+alias gchd='git checkout develop'
+
+# git pull / git push
+alias pull='git pull origin `git name-rev --name-only HEAD`'
+alias push='git push origin `git name-rev --name-only HEAD`'
+
+# db migrate
+alias dbc='bundle exec rake db:create'
+alias dbm='bundle exec rake db:migrate'
+alias dbd='bundle exec rake db:drop'
+alias dbreset='bundle exec rake db:migrate:reset'
+alias dbv='bundle exec rake db:version'
+alias dbr='bundle exec rake db:rollback'
+
+# bundle exec
+alias bx='bundle exec'
