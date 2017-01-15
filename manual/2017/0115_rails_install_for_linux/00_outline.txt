@@ -1,0 +1,62 @@
+◆(1)vagrantインストール◆
+ mkdir -p C:\develop\VirtualBox\CentOS6.3
+ cd C:\develop\VirtualBox\CentOS6.3
+ vagrant box add CentOS6.3 http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.3-x86_64-v20130101.box　...(★)
+ vagrant init CentOS6.3
+ vagrant up
+
+◆(2)Vagrantファイルで以下の記述を確認する◆
+ config.vm.box = "cent63"
+ config.vm.network "private_network", ip: "192.168.33.10"
+ config.vm.network "forwarded_port", guest: 3000, host: 3000
+
+◆(3)vagrantのネットワークアダプタの設定◆
+※VirtualBoxの設定画面で設定する。
+・"アダプター1"
+ Check"ネットワークアダプターを有効化"
+ 割り当て：NAT
+・"アダプター2"
+ 割り当て：ホストオンリーアダプター
+ 名前：VirtualBox Host-Only Ethernet Adapter
+ Click"高度"
+
+◆(4)vagrantにSSH接続してifconfig◆
+※eth0とeth2が出た場合、(★)のboxではeth0とeth1に直す必要がある。
+
+・cd /etc/sysconfig/network-scriptsに移動する。
+・移動したフォルダ内にifcfg-eth0とifcfg-eth1のファイルが残るようにする。
+
+　　$ vi ifcfg-eth1
+　　　DEVICE="eth1"
+　　　HWADDR="xx:xx:xx:xx:xx:xx" #ここにifconfigで出た値を書く。
+　　　NM_CONTROLLED="yes"
+　　　ONBOOT="yes"
+　　　IPADDR=192.168.33.10
+　　　NETMASK=255.255.255.0
+　　　NETWORK=192.168.56.0
+　　　BOOTPROTO=none
+　　　TYPE=Ethernet
+　　　USERCTL=no
+　　　IPV6INIT=no
+　　　PEERDNS=yes
+
+・service network restartを実行する。
+※view /etc/udev/rules.d/70-persistent-net.rulesを確認して名前(eth0など)やMACアドレスを確認する。
+※Windowのコマンドプロンプト側から、ping 192.168.33.10 を打って応答があることを確認する。
+※vagrantでifconfigを打ってeth0とeth1になっていることを確認する。
+
+◆(5)iptables◆
+$ vi /etc/sysconfig/iptables
+　※addline
+　　-A INPUT -m state --state NEW -m tcp -p tcp --dport 3000 -j ACCEPT
+$ service iptables save
+$ service iptables restart
+$ reboot
+
+◆(6)git/rbenv/ruby/railsのインストール◆
+
+◆(7)rails s -b 0.0.0.0を実行して、ブラウザで表示できることを確認◆
+(sqlite3を使い、ここまでできていることを確認する)
+
+※VirtualBoxの設定画面から、共有フォルダを設定できる。
+/media/sf_(folder_name)とWindowsのフォルダ内容が対応する。
